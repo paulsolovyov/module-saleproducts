@@ -26,8 +26,12 @@ class GetSaleProductsManagement implements \PaulSolovyov\SaleProducts\Api\GetSal
         $this->_productCollectionFactory = $_productCollectionFactory;
     }
 
+
+    
     /**
-     * {@inheritdoc}
+     * Gets list of products that are on sale today.
+     *
+     * @return array[string]
      */
     public function getGetSaleProducts()
     {
