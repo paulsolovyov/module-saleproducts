@@ -1,0 +1,22 @@
+{
+    "name": "paulsolovyov/module-saleproducts",
+    "description": "Get Sale Products via REST API, Set SALE banner on product by id",
+    "type": "magento2-module",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Paul Solovyov",
+            "email": "psolovyov@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "PaulSolovyov\\SaleProducts\\": ""
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+
+	<route url="/V1/paulsolovyov-saleproducts/getsaleproducts" method="GET">
+		<service class="PaulSolovyov\SaleProducts\Api\GetSaleProductsManagementInterface" method="getGetSaleProducts"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+
+	<route url="/V1/paulsolovyov-saleproducts/setsaleproducttitle" method="POST">
+		<service class="PaulSolovyov\SaleProducts\Api\ProductInterface" method="setSaleProductTitle"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+ 	
+</routes>
