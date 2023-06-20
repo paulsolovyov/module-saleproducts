@@ -51,21 +51,39 @@ class GetSaleProductsManagement implements \PaulSolovyov\SaleProducts\Api\GetSal
         // Filter for Enabled Status
         $collection->addAttributeToFilter('status', array('eq' => 1));
 
-        // Get product with Special TO Date bigger than current date
-        $collection->addAttributeToFilter('special_to_date', array('gt' => $currentDate));
+        $collection->addAttributeToFilter('special_from_date', array('notnull' => true));
+
+        // Get product with Special TO Date bigger than current date or empty (allowed by Magento)
+        $collection->addAttributeToFilter([
+            ['attribute' => 'special_to_date', 'null' => true],
+            ['attribute' => 'special_to_date', 'gt' => $currentDate],
+        ]);
+
+        // Add image data
+        $collection->addMediaGalleryData();
 
         $jsonResponse = array();
 
         foreach($collection as $product)
         {
+            // Get product images
+            $productImages = $product->getMediaGalleryImages();
+
+            // Retrieve the first image URL if available
+            $imageUrl = null;
+            if (!empty($productImages)) {
+                $imageUrl = $productImages->getFirstItem()->getUrl();
+            }
+
             $productData = [
                 'id' => $product->getId(),
                 'sku' => $product->getSku(),
                 'name' => $product->getName(),
                 'price' => $product->getPrice(),
                 'special_price' => $product->getSpecialPrice(),
-                'special_to_date' => $product->getSpecialToDate(),
                 'special_from_date' => $product->getSpecialFromDate(),
+                'special_to_date' => $product->getSpecialToDate(),
+                'image_url' => $imageUrl,
             ];
 
             $jsonResponse[] = $productData;
