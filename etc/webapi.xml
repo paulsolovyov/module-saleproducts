@@ -8,7 +8,7 @@
 		</resources>
 	</route>
 
-	<route url="/V1/paulsolovyov-saleproducts/setsaleproducttitle" method="POST">
+	<route url="/V1/paulsolovyov-saleproducts/setsaleproducttitle" method="PUT">
 		<service class="PaulSolovyov\SaleProducts\Api\ProductInterface" method="setSaleProductTitle"/>
 		<resources>
 			<resource ref="anonymous"/>
