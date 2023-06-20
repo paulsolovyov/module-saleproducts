@@ -48,12 +48,6 @@ class SetSaleProductTitleManagement implements \PaulSolovyov\SaleProducts\Api\Pr
 
             $this->_logger->info("This product doesn't exist: " . $id);
             return "This product doesn't exist";
-
-        } catch (CouldNotSaveException $e) {
-
-            $this->_logger->error("Could not save product: " . $e->getMessage());
-            return "Could not save product";
-
         }
     }
 

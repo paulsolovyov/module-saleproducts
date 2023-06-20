@@ -8,7 +8,7 @@ interface GetSaleProductsManagementInterface
 {
     /**
      * GET for GetSaleProducts api
-     * @return string
+     * @return array<int<0, max>, array<string, mixed>>
      */
     public function getGetSaleProducts();
 }
